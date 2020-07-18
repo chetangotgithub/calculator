@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <script>
+            function solve(){
+                var Ainput=document.getElementById("Ainput").value;
+                var Binput=document.getElementById("Binput").value;
+
+                var Ainputarray=Ainput.split(',').map(function(el){
+		        return parseInt(el)});
+
+                var Binputarray=Binput.split(',').map(function(el){
+		        return parseInt(el)});
+                var size=Ainputarray.length;
+                
+                value1=Binputarray[0]-Ainputarray[0]
+                value2=Binputarray[1]-Ainputarray[1]
+                value3=Binputarray[2]-Ainputarray[2]
+
+                resultant=Math.sqrt((value1*value1)+(value2*value2)+(value3*value3))
+
+                document.getElementById("resulti").value=value1/resultant;
+                document.getElementById("resultj").value=value2/resultant;
+                document.getElementById("resultk").value=value3/resultant;
+            }
+            function forcevector(){
+                force=document.getElementById("Finput").value;
+                iinput=parseFloat(document.getElementById("iinput").value)
+                jinput=parseFloat(document.getElementById("jinput").value)
+                kinput=parseFloat(document.getElementById("kinput").value)
+                a=force*iinput
+                b=force*jinput
+                c=force*kinput
+                f=Math.sqrt((a*a)+(b*b)+(c*c))
+
+                thetax=Math.acos(a/f)*180/Math.PI
+                thetay=Math.acos(b/f)*180/Math.PI
+                thetaz=Math.acos(c/f)*180/Math.PI
+
+                document.getElementById("resulti1").value=a;
+                document.getElementById("resultj1").value=b;
+                document.getElementById("resultk1").value=c;
+                document.getElementById("resultthetax").value=thetax;
+                document.getElementById("resultthetay").value=thetay;
+                document.getElementById("resultthetaz").value=thetaz;
+                
+            
+
+
+            }
+            function Momentum(){
+                iinputpos=parseFloat(document.getElementById("iinputpos").value);
+                jinputpos=parseFloat(document.getElementById("jinputpos").value);
+                kinputpos=parseFloat(document.getElementById("kinputpos").value);
+                iinputfor=parseFloat(document.getElementById("iinputfor").value);
+                jinputfor=parseFloat(document.getElementById("jinputfor").value);
+                kinputfor=parseFloat(document.getElementById("kinputfor").value);
+
+                a=(jinputpos*kinputfor)-(kinputpos*jinputfor)
+                b=-(iinputpos*kinputfor)+(kinputpos*iinputfor)
+                c=(iinputpos*jinputfor)-(jinputpos*iinputfor)
+
+                document.getElementById("momentumi").value=a
+                document.getElementById("momentumj").value=b
+                document.getElementById("momentumk").value=c
+
+
+
+
+            }
+        </script>
+    </head>
+    <body>
+        
+        <p><h1>Enter Coordinates of points seperated by (",")</h1></p>
+        <table>
+            <tr>
+                <td>A =<input type="text" id="Ainput"></td>
+            </tr>
+            <tr>
+                <td>B =<input type="text" id="Binput"></td>
+                
+            </tr>
+            <tr>
+                <td><button type="button" onclick="solve()">Solve</button></td>
+            </tr>
+        </table>
+        <p><input type="text" id="resulti">i   +<input type="text" id="resultj">j   +<input type="text" id="resultk">k</p>
+        
+
+        <p><h1>Find Force Vector</h1></p>
+        <table>
+            <tr>
+                <td>Force =<input type="text" id="Finput"></td>
+            </tr>
+            <tr>
+                <td>Direction =<input type="text" id="iinput">i   +<input type="text" id="jinput">j   +<input type="text" id="kinput">k</td>
+            </tr>
+            <td><button type="button" onclick="forcevector()">solve</button></td>
+        </table>
+        <p><input type="text" id="resulti1">i   +<input type="text" id="resultj1">j   +<input type="text" id="resultk1">k</p>
+        <p>thetax =<input type="text" id="resultthetax">    thetay =<input type="text" id="resultthetay">   thetaz =<input type="text" id="resultthetaz"></p>
+
+        <h1>Find Momentum</h1>
+        <table>
+            <tr>
+                <td>Position =<input type="text" id="iinputpos">i   +<input type="text" id="jinputpos">j   +<input type="text" id="kinputpos">k</p></td>
+            </tr>
+            <tr>
+                <td>Force =<input type="text" id="iinputfor">i   +<input type="text" id="jinputfor">j   +<input type="text" id="kinputfor">k</p></td>                
+            </tr>
+            <tr>
+                <td><button type="button" onclick="Momentum()">solve</button></td>
+            </tr>
+        </table>
+        <input type="text" id="momentumi">i   +<input type="text" id="momentumj">j   +<input type="text" id="momentumk">k
+        
+    </body>
+</html>
